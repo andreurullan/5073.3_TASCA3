@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediccio de flors Iris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediccio de Flors Iris</h1>
+    <form action="/predict" method="post">
+        <label for="petal_length">Longitud del Petal:</label><br>
+        <input type="number" id="petal_length" name="petal_length" step="0.01" min="0" required><br>
+        <label for="petal_width">Ample del Petal:</label><br>
+        <input type="number" id="petal_width" name="petal_width" step="0.01" min="0" required><br>
+        <input type="submit" value="Dali cebes...">
+    </form>
+</body>
+</html>

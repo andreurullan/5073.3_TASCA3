@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultats de Prediccio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .results {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 100px; /* Ajusta el tamaño según tus necesidades */
+            height: auto;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultats de Prediccio</h1>
+    <div class="results">
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Prediccio</th>
+                <th>Imatge</th> 
+            </tr>
+            {% for model, prediction in predictions.items() %}
+                <tr>
+                    <td>{{ model }}</td>
+                    <td>{{ prediction }}</td>
+                    <td><img src="{{ url_for('static', filename=images[model]) }}" alt="Flower Image"></td> 
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="/">Tornar</a>
+    </div>
+</body>
+</html>
+

@@ -42,23 +42,23 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    petal_length = float(request.form['petal_length'])
-    petal_width = float(request.form['petal_width'])
-    input_data = np.array([[petal_length, petal_width]])
+    long_petal= float(request.form['long_petal'])
+    ample_petal = float(request.form['ample_petal'])
+    input_data = np.array([[long_petal, ample_petal]])
 
     # Escalam les dades de entrada
-    input_data_scaled = scaler.transform(input_data)
+    entrada_escalada = scaler.transform(input_data)
 
     # feim la prediccio
-    predictions = {model: models[model].predict(input_data_scaled)[0] for model in models}
+    predictions = {model: models[model].predict(entrada_escalada)[0] for model in models}
 
     # Posam nom a les prediccions 
-    predictions_named = {model: Noms_flors[prediction] for model, prediction in predictions.items()}
+    prediccio_amb_nom = {model: Noms_flors[prediction] for model, prediction in predictions.items()}
 
     # posam imatge a les flors
-    predictions_images = {model: Images_flors[predictions_named[model]] for model in predictions_named}
+    prediccions_imagtes = {model: Images_flors[prediccio_amb_nom[model]] for model in prediccio_amb_nom}
 
-    return render_template('results.html', predictions=predictions_named, images=predictions_images)
+    return render_template('results.html', predictions=prediccio_amb_nom, images=prediccions_imagtes)
 
 if __name__ == '__main__':
     app.run(debug=True)
